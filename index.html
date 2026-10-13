@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090a13">
+<title>Siyah Mohabbat | Woh Raaz Jo Zinda Raha</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Nastaliq+Urdu&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#090a13;
+  --panel:#121421;
+  --panel2:#191b2a;
+  --gold:#c9aa82;
+  --rose:#bd879b;
+  --text:#eee8e6;
+  --muted:#a5a2b4;
+  --line:rgba(201,170,130,.22);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Poppins',sans-serif;overflow-x:hidden;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+#stars{
+  position:fixed;inset:0;width:100%;height:100%;
+  z-index:-2;pointer-events:none;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+   radial-gradient(ellipse at 15% 20%,#27203a55,transparent 45%),
+   radial-gradient(ellipse at 90% 70%,#30203555,transparent 45%),
+   linear-gradient(180deg,#090a13cc,#090a13ee);
+}
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:18px 6%;border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:20;
+  background:#090a13eF;backdrop-filter:blur(18px);
+}
+.logo{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold)}
+.header-actions{display:flex;gap:8px}
+.small-btn,.nav-btn{
+  color:var(--text);background:#ffffff08;border:1px solid var(--line);
+  padding:10px 13px;border-radius:10px;transition:.25s;
+}
+.small-btn:hover,.nav-btn:hover{background:#c9aa8220;transform:translateY(-2px)}
+.hero{
+  min-height:86vh;display:grid;place-items:center;text-align:center;
+  padding:55px 20px;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+  linear-gradient(0deg,var(--bg) 2%,#090a1370 55%,var(--bg) 100%),
+  url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=85')
+  center/cover;
+  opacity:.6;animation:heroZoom 24s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{to{transform:scale(1.09)}}
+.hero-content{position:relative;max-width:850px;animation:rise 1.2s both}
+.eyebrow{
+  color:var(--gold);letter-spacing:5px;font-size:10px;
+  text-transform:uppercase;
+}
+h1{
+  font:600 clamp(52px,10vw,110px)/.95 'Cormorant Garamond',serif;
+  margin:28px 0 18px;text-shadow:0 8px 35px #000;
+}
+h1 span{display:block;color:var(--rose);font-style:italic}
+.subtitle{color:#ded5d8;letter-spacing:2px;font-size:12px}
+.hero-quote{
+  font:italic clamp(19px,3vw,26px)/1.8 'Cormorant Garamond',serif;
+  max-width:660px;margin:28px auto;color:#e2d6df;
+}
+.gold-btn{
+  background:linear-gradient(135deg,#d8b995,#a47d68);
+  color:#171019;border:0;border-radius:30px;padding:14px 28px;
+  font-weight:600;box-shadow:0 10px 30px #c9aa8220;
+  transition:.3s;
+}
+.gold-btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px #c9aa8240}
+.stats{
+  display:flex;justify-content:center;gap:35px;flex-wrap:wrap;
+  margin-top:36px;color:var(--muted);font-size:12px;
+}
+.stats strong{display:block;font:600 26px 'Cormorant Garamond',serif;color:var(--gold)}
+main{max-width:1200px;margin:auto;padding:50px 20px 90px}
+.section-heading{text-align:center;margin-bottom:30px}
+.section-heading h2{
+  font:600 42px 'Cormorant Garamond',serif;margin:0 0 8px;
+}
+.section-heading p{color:var(--muted);font-size:12px}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:25px;align-items:start}
+.sidebar{
+  background:#11131fe8;border:1px solid var(--line);border-radius:18px;
+  padding:18px;position:sticky;top:90px;max-height:78vh;overflow:auto;
+}
+.sidebar h3{font:600 25px 'Cormorant Garamond',serif;margin:5px 0 16px}
+.search{
+  width:100%;padding:12px;background:#080a12;border:1px solid var(--line);
+  border-radius:10px;color:white;outline:none;margin-bottom:14px;
+}
+.search:focus{border-color:var(--gold)}
+.part-label{
+  color:var(--gold);font-size:10px;letter-spacing:1px;
+  padding:14px 4px 8px;text-transform:uppercase;
+}
+.chapter-link{
+  width:100%;display:block;text-align:left;color:var(--muted);
+  background:transparent;border:0;border-radius:8px;padding:10px;
+  margin:2px 0;font-size:11px;line-height:1.7;transition:.2s;
+}
+.chapter-link:hover,.chapter-link.active{
+  color:#f5e6d6;background:#c9aa8217;
+}
+.chapter-link.active{border-left:2px solid var(--gold)}
+.reader{min-width:0}
+.progress-wrap{
+  display:flex;align-items:center;gap:12px;margin-bottom:15px;
+  font-size:11px;color:var(--muted);
+}
+.progress-track{height:3px;background:#292a37;flex:1;border-radius:5px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:var(--gold);transition:width .4s}
+.book{
+  perspective:1600px;
+}
+.page{
+  background:linear-gradient(145deg,#171927,#10121d);
+  border:1px solid var(--line);border-radius:18px;
+  overflow:hidden;box-shadow:0 30px 80px #0007;
+  transform-style:preserve-3d;
+  animation:pageIn .65s both;
+}
+@keyframes pageIn{
+  from{opacity:0;transform:rotateY(-5deg) translateY(15px)}
+  to{opacity:1;transform:rotateY(0) translateY(0)}
+}
+.scene-image{
+  height:clamp(210px,38vw,390px);position:relative;overflow:hidden;
+  background:#181725;
+}
+.scene-image img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;transition:transform 1.2s,filter .8s;
+  filter:brightness(.72) saturate(.78);
+}
+.scene-image:hover img{transform:scale(1.055);filter:brightness(.9) saturate(.95)}
+.scene-image:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,#10121d 0%,transparent 65%);
+}
+.image-caption{
+  position:absolute;z-index:2;bottom:16px;left:22px;
+  font-size:10px;letter-spacing:2px;color:#e8d6c4;
+  text-transform:uppercase;
+}
+.page-body{padding:clamp(22px,5vw,48px)}
+.chapter-meta{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.chapter-title{
+  font:600 clamp(34px,6vw,57px)/1.08 'Cormorant Garamond',serif;
+  margin:16px 0 24px;
+}
+.story{
+  font:400 16px/2.15 'Cormorant Garamond',serif;
+  font-size:clamp(17px,2.2vw,21px);color:#e4dfe3;
+  white-space:pre-line;
+}
+.story p{margin:0 0 22px}
+.dialogue{color:#e4bdc9;font-style:italic}
+.separator{text-align:center;color:var(--gold);letter-spacing:8px;margin:30px 0}
+.quote-card{
+  border-left:2px solid var(--rose);padding:15px 20px;
+  background:#bd879b0b;margin:28px 0;
+  font:italic 24px/1.6 'Cormorant Garamond',serif;color:#dfc1cf;
+}
+.chapter-footer{
+  display:flex;justify-content:space-between;gap:10px;align-items:center;
+  border-top:1px solid var(--line);padding-top:22px;margin-top:28px;
+}
+.chapter-footer small{color:var(--muted);font-size:10px}
+.nav-btn:disabled{opacity:.25;cursor:not-allowed}
+.cast{
+  display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:30px;
+}
+.cast-card{
+  background:#ffffff05;border:1px solid var(--line);border-radius:14px;
+  padding:20px;transition:.3s;
+}
+.cast-card:hover{transform:translateY(-5px);background:#c9aa820b}
+.cast-card h3{font:600 27px 'Cormorant Garamond',serif;color:var(--gold);margin:0 0 8px}
+.cast-card p{font-size:12px;color:var(--muted);line-height:1.9;margin:0}
+.note{
+  margin-top:25px;padding:20px;border:1px solid var(--line);
+  border-radius:12px;color:var(--muted);font-size:11px;line-height:1.9;
+}
+footer{text-align:center;padding:30px 15px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+footer span{color:var(--rose)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:800px){
+  header{padding:14px 4%}
+  .logo{font-size:20px}
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:relative;top:0;max-height:none}
+  .chapter-list{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+  .chapter-link{font-size:10px}
+  .hero{min-height:76vh}
+  .cast{grid-template-columns:1fr}
+  main{padding:35px 12px 60px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<canvas id="stars"></canvas>
+
+<header>
+  <div class="logo">Siyah Mohabbat <span style="color:#bd879b">♥</span></div>
+  <div class="header-actions">
+    <button class="small-btn" id="motionBtn" aria-label="Toggle animations">✦ Motion</button>
+    <button class="small-btn" onclick="window.scrollTo({top:document.querySelector('#novel').offsetTop-60,behavior:'smooth'})">Read ↓</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="eyebrow">A novel of love, secrets & silence</div>
+    <h1>SIYAH <span>MOHABBAT</span></h1>
+    <div class="subtitle">WOH RAAZ JO ZINDA RAHA</div>
+    <p class="hero-quote">“Kuch raaz waqt ke saath khatam nahi hote. Woh mohabbat ka chehra pehen kar laut aate hain.”</p>
+    <button class="gold-btn" onclick="startReading()">Enter the Story ✦</button>
+    <div class="stats">
+      <div><strong>550</strong>Planned Chapters</div>
+      <div><strong>01</strong>Dark Mystery</div>
+      <div><strong>∞</strong>Unsaid Feelings</div>
+    </div>
+  </div>
+</section>
+
+<main id="novel">
+  <div class="section-heading">
+    <h2>The Story Begins</h2>
+    <p>Har khamoshi ke peeche ek kahani hoti hai.</p>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h3>Chapters <span style="color:var(--gold)">550</span></h3>
+      <input class="search" id="search" placeholder="Search chapters..." aria-label="Search chapters">
+      <div id="chapterList" class="chapter-list"></div>
+    </aside>
+
+    <section class="reader">
+      <div class="progress-wrap">
+        <span id="progressLabel">Chapter 1 of 550</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <span id="progressPercent">0%</span>
+      </div>
+
+      <div class="book">
+        <article class="page" id="page">
+          <div class="scene-image">
+            <img id="sceneImg"
+              src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1400&q=85"
+              alt="A mysterious moonlit night"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=1400&q=80'">
+            <div class="image-caption" id="imageCaption">Scene I · Raees Manzil</div>
+          </div>
+          <div class="page-body">
+            <div class="chapter-meta" id="chapterMeta">PART I · RAAEES MANZIL</div>
+            <h2 class="chapter-title" id="chapterTitle">Woh Ghar Jo Intezaar Karta Raha</h2>
+            <div class="story" id="story"></div>
+            <div class="quote-card" id="chapterQuote"></div>
+            <div class="chapter-footer">
+              <button class="nav-btn" id="prevBtn" onclick="changeChapter(-1)">← Previous</button>
+              <small id="chapterNumber">CHAPTER 01</small>
+              <button class="nav-btn" id="nextBtn" onclick="changeChapter(1)">Next →</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="note">
+        <strong style="color:var(--gold)">Reader's note</strong><br>
+        Is single-file edition mein 550-chapter navigation aur pehle 5 sample chapters diye gaye hain.
+        Baqi chapters ke liye abhi full prose likhna baqi hai. Chapter list mein unhein planned chapters ke taur par dikhaya gaya hai, taake unhein sample text samajhne ki ghalti na ho.
+        Tasveerein online Unsplash URLs se load hoti hain; unhein dikhne ke liye internet connection zaroori hai.
+      </div>
+    </section>
+  </div>
+
+  <div class="section-heading" style="margin-top:65px">
+    <h2>The Characters</h2>
+    <p>Do dil. Do raaz. Ek aisi haveli jo sab jaanti hai.</p>
+  </div>
+  <div class="cast">
+    <div class="cast-card">
+      <h3>Siraj Mir</h3>
+      <p>Ek architect jo purani imaraton ko nayi zindagi deta hai, lekin apne maazi ke band darwaze kholne se darta hai. Raees Manzil uske liye sirf ek project nahi rehti.</p>
+    </div>
+    <div class="cast-card">
+      <h3>Zahra Raees</h3>
+      <p>Ek painter aur restorer jiske paas haveli ki kahani ka woh hissa hai jo Siraj ko maloom nahi. Uski khamoshi mein mohabbat bhi hai aur ek gehra raaz bhi.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>SIYAH MOHABBAT <span>♥</span> WOH RAAZ JO ZINDA RAHA</p>
+  <p>A fictional work · Designed for a cinematic reading experience</p>
+</footer>
+
+<script>
+const parts = [
+  "Raees Manzil",
+  "Ajnabi Zahra",
+  "Khamosh Iqraar",
+  "Band Kamra",
+  "Adhoori Yaadein",
+  "Siyah Vaade",
+  "Aakhri Gawah",
+  "Mohabbat Ya Fareb",
+  "Woh Raat",
+  "Raaz Jo Zinda Raha",
+  "Aakhri Safha"
+];
+
+const openingTitles = [
+ "Woh Ghar Jo Intezaar Karta Raha",
+ "Pehla Khat",
+ "Khidki Ke Us Paar",
+ "Tasveer Mein Chhupa Raaz",
+ "Band Darwazay Ki Aahat"
+];
+
+const chapterImages = [
+ "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1400&q=85",
+ "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=85",
+ "https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=1400&q=85",
+ "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=85",
+ "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1400&q=85"
+];
+
+const chapters = [
+{
+title:openingTitles[0],
+image:chapterImages[0],
+caption:"Scene I · Raees Manzil",
+quote:"“Kuch ghar pathar se nahi, un raazon se bante hain jinhein koi zubaan nahi milti.”",
+text:[
+"Raat ka aakhri pehar tha. Shehar ki roshniyan baarish ke dhundlay parde ke peeche chhup chuki thin. Sunsaan sadak par ek siyah gaari ahista ahista aage barh rahi thi. Gaari ki pichhli seat par baitha Siraj Mir khirki se bahar dekh raha tha. Uske haath mein Raees Manzil ki chaabi thi aur zehan mein ek aisa bojh jiska naam woh khud bhi nahi jaanta tha.",
+"Raees Manzil shehar se kuch door, purane darakhton ke darmiyan khari thi. Uski deewaron par waqt ke nishaan thay, khirkiyon par gard aur darwazon par zang. Magar sabse ajeeb baat yeh thi ke itni purani imarat ke bawajood uski oopari manzil ki ek khirki se roshni aa rahi thi.",
+"Siraj gaari se utra. Baarish ki thandi boondein uske chehre par parin. Usne sar utha kar haveli ko dekha. Ek lamhe ke liye usay mehsoos hua ke woh is jagah ko pehle bhi dekh chuka hai. Kahan? Kab? Ya kis yaad mein? Uske paas koi jawab nahi tha.",
+"Darwaza kholte hi purani lakri ki aawaaz khaali hall mein goonj uthi. Andar hawa mein mitti, purane kagaz aur kisi bujhe hue itr ki halki si mehak thi. Deewar par lagi tasveeron mein chehre dhundlay thay. Ek tasveer ke saamne ruk kar Siraj ne gard saaf ki. Tasveer mein ek jawan larki thi, magar uska chehra kisi ne jaan boojh kar khurach diya tha.",
+"“Aap ko der ho gayi.”",
+"Aawaaz seedhiyon ki taraf se aayi. Siraj ne palat kar dekha. Ek buzurg aurat haath mein lantern liye khari thi. Uske chehre par hairani nahi thi, jaise woh Siraj ke aane ka intezaar kar rahi ho.",
+"“Aap Saira Begum hain?” Siraj ne poocha.",
+"“Ji. Aur aap Siraj Mir.”",
+"Siraj ne chaabi jeb mein rakh li. “Aap ko mera intezaar tha?”",
+"Saira ne foran jawab nahi diya. Usne lantern ko thora ooncha kiya aur Siraj ko gaur se dekha. “Is ghar mein kuch logon ka intezaar khatam ho jata hai, beta. Kuch ka kabhi nahi.”",
+"Siraj ko uska jumla be-maani laga, magar Saira ki aankhon mein aisi udaasi thi jo mazaaq nahi ho sakti thi.",
+"Us raat Siraj ko jo kamra diya gaya, uski khirki seedha pichhle bagh ki taraf khulti thi. Door aasman par chand badalon mein chhupa hua tha. Siraj ne apna samaan rakha, coat utara aur kamray ka jaiza lene laga. Mez par gard thi, almari band thi aur deewar par ek purani ghari ruki hui thi. Uski sui teen baj kar satrah minute par atki thi.",
+"Siraj ne ghari ko chhua. Usi waqt neeche se kisi cheez ke girne ki aawaaz aayi. Woh lantern uthaye baghair corridor mein nikla. Aawaaz uske kamray ke bilkul neeche se aayi thi, us jagah se jahan lakri ka farsh baqi hisse se zara ubhra hua tha.",
+"Usne ghutnon ke bal baith kar farsh ko dekha. Ek patli si daraar ke andar kagaz ka kona nazar aa raha tha. Koshish ke baad usne lakri ka chhota tukra uthaya aur ek purana lifafa nikaal liya.",
+"Lifafay par siyahi se sirf ek naam likha tha: Siraj.",
+"Uske haath thanday par gaye. Usne lifafa khola. Andar ek jumla tha, jiski likhai purani thi magar har harf saaf tha.",
+"“Agar tum yeh khat parh rahe ho, toh iska matlab hai ke Raees Manzil ne tumhein aakhirkaar wapas bula liya hai.”",
+"Siraj ne khat dobara parha. Wapas? Woh pehli baar yahan aaya tha. Kam az kam uski yaad mein toh aisa hi tha.",
+"Door corridor mein kisi darwazay ke band hone ki aawaaz aayi. Siraj foran bahar nikla. Hall khaali tha. Magar seedhiyon ke aakhri paaydan par geelay qadam ke nishaan thay, jaise koi baarish se bheeg kar abhi abhi upar gaya ho.",
+"Siraj ne upar dekha. Band darwazay ke neeche se halki si roshni nikal rahi thi. Usne haath darwazay ke handle par rakha. Andar se ek dheemi aurat ki aawaaz aayi.",
+"“Siraj... tumhein yahan nahi aana chahiye tha.”"
+]
+},
+{
+title:openingTitles[1],
+image:chapterImages[1],
+caption:"Scene II · The Letter",
+quote:"“Kisi anjaan ki likhai mein apna naam dekhna, kabhi kabhi apna maazi dekhne jaisa hota hai.”",
+text:[
+"Subah hui toh baarish ruk chuki thi, magar haveli ki deewaron se nami abhi tak chipki hui thi. Siraj ne raat wala lifafa apni diary ke darmiyan rakh diya. Woh khud ko samjhata raha ke shayad yeh kisi purane contract ka hissa ho, koi mazaaq ho, ya Saira Begum ka usey daraane ka tareeqa.",
+"Nashtay ke waqt usne Saira se seedha sawal kiya. “Is ghar mein pehle bhi koi Siraj Mir aaya tha?”",
+"Saira ke haath mein chai ka cup ek pal ko ruk gaya. Phir usne cup mez par rakha. “Naam toh bohat logon ke ek jaise hote hain.”",
+"“Lekin khat par mera poora naam tha.”",
+"“Toh phir aap ko us shakhs ko dhoondhna chahiye jisne khat likha.”",
+"Siraj ko yeh jawab pasand nahi aaya. “Aur woh shakhs kahan milega?”",
+"Saira ne khirki se bahar dekha. “Agar woh chahta hai ke aap usay dhoondein, toh woh khud samne aa jayega.”",
+"Us din Siraj ne haveli ke naqshay aur restoration ke papers dekhe. Pichhle hissay mein ek kamra tha jiska zikr naqshay mein toh maujood tha, magar us tak jaane wala corridor baad ki tameer mein band kar diya gaya tha.",
+"Shaam ke qareeb usey mez ke neeche ek aur kagaz mila. Is baar kagaz par sirf chand ki ek tasveer bani thi. Neeche ek jumla likha tha: “Poornima ki raat, purani khirki ke paas.”",
+"Siraj ne khirki se bahar dekha. Haveli ke doosre kinare par ek lambi khirki thi jiske parde hamesha band rehte thay. Pehli baar usay yaqeen hua ke koi uske har qadam ko dekh raha hai."
+]
+},
+{
+title:openingTitles[2],
+image:chapterImages[2],
+caption:"Scene III · The Window",
+quote:"“Kuch mulaqatein aawaaz se pehle khamoshi mein hoti hain.”",
+text:[
+"Raat ko chand badalon se nikal aaya. Siraj apne kamray ki khirki ke paas khara tha jab usne saamne wali manzil ki khirki mein ek saaya dekha. Ek larki. Uske lambe baal kandhon par bikhray hue thay aur haath mein koi kitaab thi.",
+"Siraj ne khirki kholi. Thandi hawa kamray mein bhar gayi. Larki ne sar uthaya, jaise usey pehle se maloom ho ke woh wahan khara hai.",
+"“Aap naye aaye hain?” usne door se poocha.",
+"“Agar aap ko maloom hai ke main naya hoon, toh phir aap ko yeh bhi maloom hoga ke main kaun hoon.”",
+"Larki ke honton par halki si muskurahat aayi. “Naam jaan lena kisi ko jaan lena nahi hota.”",
+"Siraj kuch kehne hi wala tha ke larki ne kitaab band kar di. “Aapko is ghar mein zyada sawal nahi karne chahiye.”",
+"“Aur aapko mere sawalon ke jawab dene se itna darna nahi chahiye.”",
+"Uski muskurahat gayab ho gayi. Kuch pal woh Siraj ko dekhti rahi. Phir usne khirki band kar di.",
+"Siraj ko uski baat se zyada uski aankhon mein nazar aane wali pehchan ne pareshan kiya. Jaise woh usay kisi aise waqt se jaanti ho jo Siraj ko yaad nahi tha.",
+"Agli subah Saira ne bataya ke haveli ke malik ki bhateeji, Zahra Raees, kuch dino ke liye wapas aayi hai. Siraj ke haath mein chai ka cup ruk gaya.",
+"Zahra.",
+"Naam sun kar uske zehan mein ek dhundla sa manzar ubhra: chandni, ek band darwaza aur kisi larki ki aawaaz jo keh rahi thi, “Mujhe bhool mat jana.”"
+]
+},
+{
+title:openingTitles[3],
+image:chapterImages[3],
+caption:"Scene IV · The Portrait",
+quote:"“Tasveer ka chehra mitaya ja sakta hai, magar uski maujoodgi ka saboot nahi.”",
+text:[
+"Zahra se dobara mulaqat restoration room mein hui. Woh ek purani painting ke saamne baithi thi aur bareek brush se uske kinare saaf kar rahi thi. Siraj ne tasveer ko dekha. Us mein ek bagh, ek safed darwaza aur chand ki roshni mein khari do dhundli shaklein bani thin.",
+"“Yeh painting kitni purani hai?” Siraj ne poocha.",
+"“Itni purani ke is mein nazar aane wale log khud apni kahani bhool chuke hon.” Zahra ne brush rakha.",
+"Siraj ne tasveer ke kone par tareekh dekhi. Woh satrah saal purani thi. Neeche likhe hue initials mein ek 'S' aur ek 'Z' saaf nazar aa rahe thay.",
+"“Yeh initials kis ke hain?”",
+"Zahra ne foran painting par kapra daal diya. “Har cheez ko naam dena zaroori nahi hota, Siraj.”",
+"Usne pehli baar Siraj ka naam is tarah liya jaise us naam ke saath koi purani yaad judi ho.",
+"Siraj ne usay dekha. “Hum pehle mil chuke hain?”",
+"Zahra kuch der khamosh rahi. Phir usne kaha, “Shayad aapko woh baat yaad nahi rakhni chahiye.”",
+"Usi waqt corridor mein qadam sunayi diye. Kamal Raees darwazay par khara tha. Uski nazar painting par gayi aur chehra sakht ho gaya.",
+"“Is tasveer ko dobara mat kholna,” usne Zahra se kaha. “Kuch cheezein band hi achhi lagti hain.”"
+]
+},
+{
+title:openingTitles[4],
+image:chapterImages[4],
+caption:"Scene V · Behind the Door",
+quote:"“Jis darwazay ke peeche sach ho, usay band rakhna bhi ek faisla hota hai.”",
+text:[
+"Us raat Siraj ne faisla kar liya ke woh band corridor tak zaroor pohanchega. Restoration ke naqshay, ek purani torch aur haveli ki chaabiyon ka guchha le kar woh upar gaya.",
+"Corridor ke aakhir mein lakri ka darwaza tha. Us par koi taala nahi tha, phir bhi handle ghoom nahi raha tha. Siraj ne darwazay ko zor se dhakela. Purani lakri ki cheekh ke saath woh thora sa khula.",
+"Andar ek chhota kamra tha. Deewaron par dhool se dhaki tasveerein aur farsh par band sandook rakha tha. Hawa mein purane kagazon ki mehak thi.",
+"Sandook ke andar diaries, kuch tasveerein aur ek chhoti chaabi thi. Sabse upar rakhi diary ke pehle safhe par likha tha: “Agar Siraj wapas aaye, toh usey sach batana.”",
+"Neeche tareekh thi — satrah saal pehle ki.",
+"Siraj ke kaan mein apni dhadkan goonjne lagi. Usne diary ka agla safha palta, magar likhai aadhi phati hui thi. Jo alfaaz parhe ja sakte thay, un mein Zahra ka naam baar baar likha tha.",
+"Darwazay ke bahar kisi ne aahista se kaha, “Maine kaha tha na, tumhein yahan nahi aana chahiye tha.”",
+"Siraj ne palat kar dekha. Zahra darwazay mein khari thi. Uski aankhon mein gussa nahi, ek aisa khauf tha jo Siraj ne pehle kabhi nahi dekha tha.",
+"“Ab tumne woh cheez dhoondh li hai,” Zahra ne kaha, “jiske liye tumhein dobara yahan bulaya gaya tha.”"
+]
+}
+];
+
+const plannedTitles = [
+ "Purani Diary","Saira Begum Ka Sach","Mez Ke Neeche","Zahra Ki Khamoshi",
+ "Band Tasveer","Adhoora Wada","Raat Ka Gawah","Woh Naam","Aakhri Nishaan",
+ "Khamosh Qadam","Gumshuda Safha","Purani Chaabi","Sheeshe Ka Kamra",
+ "Ajnabi Yaad","Sach Ka Saaya","Tanha Corridor","Chandni Ka Raaz",
+ "Woh Tasveer Dobara","Ek Aur Lifafa","Adhoori Kahani"
+];
+
+function partFor(n){return Math.min(10,Math.floor((n-1)/50))}
+function titleFor(n){
+ if(n<=chapters.length)return chapters[n-1].title;
+ if(n<=5)return openingTitles[n-1];
+ return plannedTitles[(n-6)%plannedTitles.length]+" · "+String(n).padStart(3,"0");
+}
+function chapterData(n){
+ if(n<=chapters.length)return chapters[n-1];
+ const part=partFor(n);
+ return {
+   title:titleFor(n),
+   image:chapterImages[n%chapterImages.length],
+   caption:"Part "+(part+1)+" · "+parts[part],
+   quote:"“Har raaz ka ek waqt hota hai, aur har mohabbat ki ek qeemat.”",
+   text:[
+    "Yeh chapter abhi outline mein planned hai. Is safhe par kahani ka agla hissa likha jana baqi hai.",
+    "Part "+(part+1)+", "+parts[part]+", mein Siraj aur Zahra ke darmiyan rishte aur gehre honge. Raees Manzil ke purane raaz, diary ke gumshuda safhe aur guzri hui raat ke saboot dheere dheere samne aayenge.",
+    "Agli kahani ko pehle chapters ke waqiat, kirdaron ki niyyat aur pehle se diye gaye clues ke saath jor kar likhna hoga, taake 550 chapters ki continuity barqarar rahe."
+   ]
+ };
+}
+
+let current=1;
+let motion=true;
+const list=document.getElementById("chapterList");
+
+function buildList(filter=""){
+ list.innerHTML="";
+ let matched=0;
+ for(let p=0;p<parts.length;p++){
+  const start=p*50+1,end=start+49;
+  const names=[];
+  for(let n=start;n<=end;n++){
+   const t=titleFor(n);
+   if(!filter || (t+" "+n+" "+parts[p]).toLowerCase().includes(filter.toLowerCase())){
+    names.push({n,t});
+   }
+  }
+  if(!names.length)continue;
+  const label=document.createElement("div");
+  label.className="part-label";
+  label.textContent="Part "+(p+1)+" · "+parts[p]+" ("+start+"–"+end+")";
+  list.appendChild(label);
+  names.forEach(({n,t})=>{
+   const b=document.createElement("button");
+   b.className="chapter-link"+(n===current?" active":"");
+   b.textContent=String(n).padStart(3,"0")+" — "+t;
+   b.onclick=()=>showChapter(n,true);
+   list.appendChild(b);
+   matched++;
+  });
+ }
+ if(!matched){
+  list.innerHTML='<div class="part-label">No matching chapters found.</div>';
+ }
+}
+function showChapter(n,scroll=false){
+ current=Math.max(1,Math.min(550,n));
+ const c=chapterData(current);
+ const page=document.getElementById("page");
+ page.style.animation="none";
+ void page.offsetWidth;
+ page.style.animation=motion?"pageIn .65s both":"none";
+ document.getElementById("chapterMeta").textContent=
+  "PART "+(partFor(current)+1)+" · "+parts[partFor(current)].toUpperCase();
+ document.getElementById("chapterTitle").textContent=c.title;
+ document.getElementById("imageCaption").textContent=c.caption;
+ document.getElementById("sceneImg").src=c.image;
+ document.getElementById("sceneImg").alt=c.caption+" cinematic scene";
+ const story=document.getElementById("story");
+ story.innerHTML="";
+ c.text.forEach(par=>{
+  const p=document.createElement("p");
+  p.textContent=par;
+  story.appendChild(p);
+ });
+ document.getElementById("chapterQuote").textContent=c.quote;
+ document.getElementById("chapterNumber").textContent="CHAPTER "+String(current).padStart(3,"0");
+ document.getElementById("progressLabel").textContent="Chapter "+current+" of 550";
+ const pct=Math.round(current/550*100);
+ document.getElementById("progressFill").style.width=pct+"%";
+ document.getElementById("progressPercent").textContent=pct+"%";
+ document.getElementById("prevBtn").disabled=current===1;
+ document.getElementById("nextBtn").textContent=current===550?"The End":"Next →";
+ buildList(document.getElementById("search").value);
+ if(scroll)document.querySelector(".reader").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function changeChapter(delta){showChapter(current+delta)}
+function startReading(){
+ document.getElementById("novel").scrollIntoView({behavior:"smooth"});
+ showChapter(1);
+}
+document.getElementById("search").addEventListener("input",e=>buildList(e.target.value));
+document.getElementById("motionBtn").addEventListener("click",()=>{
+ motion=!motion;
+ document.getElementById("motionBtn").textContent=motion?"✦ Motion":"Motion Off";
+ document.querySelectorAll("*").forEach(el=>{
+  if(!motion)el.style.animationPlayState="paused";
+  else el.style.animationPlayState="running";
+ });
+});
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="ArrowRight")changeChapter(1);
+ if(e.key==="ArrowLeft")changeChapter(-1);
+});
+
+// Starfield background
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+let stars=[];
+function resize(){
+ canvas.width=innerWidth*devicePixelRatio;
+ canvas.height=innerHeight*devicePixelRatio;
+ ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+ stars=Array.from({length:Math.min(160,Math.floor(innerWidth/7))},()=>({
+  x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+  r:Math.random()*1.3+.2,a:Math.random()*.6+.15,
+  speed:Math.random()*.15+.025
+ }));
+}
+function draw(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ stars.forEach(s=>{
+  ctx.beginPath();
+  ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+  ctx.fillStyle="rgba(222,210,244,"+s.a+")";
+  ctx.fill();
+  if(motion){s.y-=s.speed;if(s.y<0){s.y=innerHeight;s.x=Math.random()*innerWidth}}
+ });
+ requestAnimationFrame(draw);
+}
+addEventListener("resize",resize);
+resize();draw();
+showChapter(1);
+</script>
+</body>
+</html>
